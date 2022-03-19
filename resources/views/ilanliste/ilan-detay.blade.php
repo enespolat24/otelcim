@@ -3,8 +3,8 @@
 
 
 <div style="height: 10em; background-color: rgb(202, 79, 79)"></div>
-<div class="row g-5 pt-4">
-    <div class="col-md-8">
+<div class="row g-5 p-4">
+    <div class="col-md-8 py-4">
 
         {{-- <img src="{{ asset(" assets/img/ilan/". $photos->photos[0]->name) }}" style=""> --}}
 
@@ -34,8 +34,7 @@
         </div>
 
 
-        <h1 class="mt-2 text-center" style="margin-left: 3rem; font-family: 'Courier New', Courier, monospace">
-            {{$ilan->baslik}}</h1>
+        <h1 class="mt-2 text-center" style="margin-top: 1em!important; margin-left: 3rem; font-family: 'Courier New', Courier, monospace">{{$ilan->baslik}}</h1>
         <h5 class="px-4" style="font-family: 'Courier New', Courier, monospace;">{{$ilan->aciklama}}</h5>
 
     </div>
