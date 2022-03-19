@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ilan;
-use App\Models\User;
+use App\Models\Question;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,10 +28,10 @@ class IlanController extends Controller
      */
     public function sehirFiltre(Request $request)
     {
-            $search = $request->input('search');
+        $search = $request->input('search');
 
-            // Search in the title and body columns from the posts table
-            $results = Ilan::query()
+        // Search in the title and body columns from the posts table
+        $results = Ilan::query()
                 ->where('sehir', 'LIKE', "%{$search}%")
                 ->orWhere('baslik', 'LIKE', "%{$search}%")
                 ->orWhere('ilce', 'LIKE', "%{$search}%")
@@ -39,8 +39,8 @@ class IlanController extends Controller
                 ->orWhere('aciklama', 'LIKE', "%{$search}%")
                 ->get();
 
-            // Return the search view with the resluts compacted
-            return view('ilanliste.list', compact('results'));
+        // Return the search view with the resluts compacted
+        return view('ilanliste.list', compact('results'));
     }
 
     /**
@@ -53,7 +53,7 @@ class IlanController extends Controller
         $sonuc = Ilan::where('ilce', 'like', '%'.$ilce.'%')->get();
 
         if (!$sonuc->count()) {
-          return "sonuç bulunamadı";
+            return "sonuç bulunamadı";
         }
 
         return $sonuc;
@@ -64,8 +64,8 @@ class IlanController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) {
-
+    public function store(Request $request)
+    {
         Ilan::create([
             'baslik' => $request->baslik,
             'aciklama' => $request->aciklama,
@@ -132,5 +132,16 @@ class IlanController extends Controller
         }
         $ilan->delete();
         return "ilan başarıyla silindi";
+    }
+
+    public function ilanDetay($id)
+    {
+        $yetkili = Ilan::find($id);
+
+        $questions = Question::query()->where('ilan_id', '=', $id)->get();
+
+        $ilan = Ilan::find($id);
+        $photos = Ilan::find($id);
+        return view('ilanliste.ilan-detay', compact('ilan', 'questions', 'yetkili', 'photos'));
     }
 }

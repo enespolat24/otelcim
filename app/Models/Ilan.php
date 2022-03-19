@@ -36,13 +36,14 @@ class Ilan extends Model
         'user_id'
     ];
 
-    public function user(){
-       return $this->belongsTo(User::class);
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function photos()
     {
-        return $this->hasMany(Photo::class);
+        return $this->hasMany(Photo::class, 'ilan_id');
     }
 
     public function reservations()

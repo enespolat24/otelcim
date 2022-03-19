@@ -47,6 +47,11 @@ class User extends Authenticatable
         return $this->hasMany(Ilan::class);
     }
 
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
+
     public function reservations()
     {
         return $this->hasMany(Reservation::class);
