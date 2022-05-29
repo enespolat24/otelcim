@@ -49,7 +49,8 @@ Route::get('ilan-edit/{id}', function($id){
     }
 })->middleware('auth');
 Route::post('cevap-ekle' , [App\Http\Controllers\QuestionController::class,'cevapla'])->middleware('auth');
-Route::post('ilan-guncelle/{id}', [App\Http\Controllers\IlanController::class,'ilanGuncelle'])->middleware('auth');
+Route::post('ilan-fiyat-guncelle/{id}', [App\Http\Controllers\IlanController::class,'fiyatGuncelle'])->middleware('auth');
+Route::post('ilan-baslik-aciklama-guncelle/{id}', [App\Http\Controllers\IlanController::class,'ilanBaslikAciklama'])->middleware('auth');
 
 
 

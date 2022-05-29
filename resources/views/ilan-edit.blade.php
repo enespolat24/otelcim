@@ -12,13 +12,13 @@
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{ asset("assets/img/ilan/". $photos->photos[0]->name) }}" style="" height="600px">
+                    <img src="{{ asset("assets/img/ilan/".$photos->photos[0]->name)}}" style="" height="600px">
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset("assets/img/ilan/". $photos->photos[1]->name) }}" style="" height="600px">
+                    <img src="{{ asset("assets/img/ilan/".$photos->photos[1]->name) }}" style="" height="600px">
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset("assets/img/ilan/". $photos->photos[2]->name) }}" style="" height="600px">
+                    <img src="{{ asset("assets/img/ilan/".$photos->photos[2]->name) }}" style="" height="600px">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
@@ -32,25 +32,28 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-
-
-        <h1 class="mt-2 text-center" style="margin-top: 1em!important; margin-left: 3rem; font-family: 'Courier New', Courier, monospace">{{$ilan->baslik}}</h1>
-        <h5 class="px-4" style="font-family: 'Courier New', Courier, monospace;">{{$ilan->aciklama}}</h5>
-
+        <div class="m-5">
+            <form action="/ilan-baslik-aciklama-guncelle/{{$ilan->id}}" method="POST">
+                @csrf
+                {{-- <h1 class="mt-2 text-center"
+                    style="margin-top: 1em!important; margin-left: 3rem; font-family: 'Courier New', Courier, monospace">
+                    {{$ilan->baslik}}</h1> --}}
+                    <label for="baslik">İlan Başlığı</label>
+                <input type="text" class="form-control mb-5" id="baslik" name="baslik" value="{{$ilan->baslik}}">
+                <label for="baslik">İlan Açıklaması</label>
+                <textarea class="form-control" id="aciklama" rows="10" name="aciklama">{{$ilan->aciklama}}</textarea>
+                <button type="submit" class="btn btn-success mt-4">GÜNCELLE</button>
+        </div>
     </div>
 
     <div class="col-md-4">
         <div class="card mb-4 text-center p-2">
             <h1>{{$ilan->fiyat}} - Geceliği</h1>
-            <form method="POST" action="/ilan-guncelle/{{$ilan->id}}">
+            <form method="POST" action="/ilan-fiyat-guncelle/{{$ilan->id}}">
                 @csrf
-                <input type="hidden" name="id" value="{{$ilan->id}}" required>
-                <input type="hidden" name="baslik" value="{{$ilan->baslik}}" required>
-                <input type="hidden" name="" value="{{$ilan->id}}" required>
-                <input type="hidden" name="id" value="{{$ilan->id}}" required>
-                <input type="text" name="fiyat" id="fiyat"  required>
+                <input type="text" name="fiyat" id="fiyat">
 
-                <button type="submit">fiyat güncelle</button>
+                <button type="submit" class="mt-2 btn btn-success">fiyat güncelle</button>
             </form>
         </div>
 
@@ -75,9 +78,9 @@
                     <form method="POST" action="/cevap-ekle">
                         @csrf
                         <input type="hidden" name="id" value="{{$q->id}}">
-                        <input type="text" name="answer" id="answer">
+                        <input class="form-control" type="text" name="answer" id="answer">
 
-                        <button type="submit">cevapla</button>
+                        <button type="submit" class="btn btn-danger mt-2">cevapla</button>
                     </form>
                     @endif
 
