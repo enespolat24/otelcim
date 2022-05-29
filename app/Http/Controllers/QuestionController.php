@@ -19,4 +19,11 @@ class QuestionController extends Controller
         // ]);
         return view('ilanliste.ilan-detay', compact('questions'));
     }
+    public function cevapla(Request $request)
+    {
+        $soru = Question::find($request->id);
+        $soru->answer = $request->answer;
+        $soru->save();
+        return redirect()->back();
+    }
 }

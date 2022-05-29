@@ -144,4 +144,12 @@ class IlanController extends Controller
         $photos = Ilan::find($id);
         return view('ilanliste.ilan-detay', compact('ilan', 'questions', 'yetkili', 'photos'));
     }
+    public function ilanGuncelle(Request $request,$id){
+        $ilan = Ilan::find($id);
+        $ilan->baslik = $request->baslik;
+        $ilan->aciklama = $request->aciklama;
+        $ilan->fiyat = $request->fiyat;
+        $ilan->save();
+        return redirect()->back();
+    }
 }

@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\Ilan;
+use App\Models\Question;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,25 +19,45 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::get('/ilanliste', function () {
     $ilan = Ilan::all();
     return view('ilanliste.list', compact('ilan'));
-});
+})->middleware('verified');
+
 Auth::routes();
-
-Route::get('/chat/{to_user_id}', [App\Http\Controllers\ChatController::class ,'mesajAt']);
-Route::get('/detay/{id}', [App\Http\Controllers\IlanController::class ,'ilanDetay']);
+Route::get('/detay/{id}', [App\Http\Controllers\IlanController::class ,'ilanDetay'])->middleware('verified');
 
 
+Route::get('/email/verify', [App\Http\Controllers\Auth\VerificationController::class,'show'])->name('verification.notice');
+Route::get('/email/verify/{id}/{hash}',[App\Http\Controllers\Auth\VerificationController::class,'verify'])->name('verification.verify')->middleware(['signed']);
+Route::post('/email/resend', [App\Http\Controllers\Auth\VerificationController::class,'resend'])->name('verification.resend');
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+Route::get('/profilim', function(){
+    return view('profil');
+})->middleware('auth');
+Route::get('ilan-edit/{id}', function($id){
+
+        $questions = Question::query()->where('ilan_id', '=', $id)->get();
+
+        $ilan = Ilan::find($id);
+        $photos = Ilan::find($id);
+    if($ilan->user_id == Auth::user()->id){
+        return view('ilan-edit', compact('ilan','photos','questions'));
+    }
+    else{
+        abort(403);
+    }
+})->middleware('auth');
+Route::post('cevap-ekle' , [App\Http\Controllers\QuestionController::class,'cevapla'])->middleware('auth');
+Route::post('ilan-guncelle/{id}', [App\Http\Controllers\IlanController::class,'ilanGuncelle'])->middleware('auth');
 
 
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::resource('oda', 'RoomController');
-    Route::get('profil', 'ProfileController@profile')->name('profile');
-    Route::post('profil', 'ProfileController@update')->name('profile.update');
-    Route::get('oda', 'RoomController@index')->name('rooms');
-    Route::post('reservations/store', 'ReservationController@store')->name('reservation.store');
-    Route::get('your_reservations', 'ReservationController@your_reservations')->name('your-reservations');
+    // // Route::resource('oda', 'RoomController');
+    // // Route::get('profil', 'ProfileController@profile')->name('profile');
+    // // Route::post('profil', 'ProfileController@update')->name('profile.update');
+    // Route::get('oda', 'RoomController@index')->name('rooms');
+    // Route::post('reservations/store', 'ReservationController@store')->name('reservation.store');
+    // Route::get('your_reservations', 'ReservationController@your_reservations')->name('your-reservations');
 });

@@ -21,8 +21,7 @@
 </head>
 <body>
 {{-- @include('OtelYetkilisi.navbar') --}}
-@include('navbar')
-
+@include('layouts.navbar')
      @yield('content')
 
 

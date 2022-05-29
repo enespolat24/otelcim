@@ -15,10 +15,10 @@
                     <a class="nav-link text-dark" href="/messages">mesajlarım</a>
                 </li>
             </ul>
-            @if(Auth::user()->is_ev_sahibi == 1)
+            @if(Auth::user()->is_hotel_manager == 1)
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="{{ route('home') }}" style="color: red;">İlanlarım</a>
+                    <a class="nav-link text-dark" href="/ilanlarim" style="color: red;">İlanlarım</a>
                 </li>
             </ul>
             @endif
@@ -36,23 +36,17 @@
             </li>
             @endif
             @else
-            <div class="dropdown navbar-nav">
-                <a style="color: rgb(255, 0, 0);" id="navbarDropdown" class="nav-link " href="#" role="button"
-                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    {{ Auth::user()->name }}
+            <li class="nav-item dropdown" style="list-style-type: none;">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                  <i class="fa fa-user"> {{Auth::user()->name}}</i>
                 </a>
-
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
-                        Çıkış yap
-                    </a>
-
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                        @csrf
-                    </form>
+                    <a class="dropdown-item" href="/profilim">Profil Sayfası</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ url('/logout') }}"> Çıkış Yap</a>
                 </div>
-            </div>
+              </li>
             @endguest
         </div>
 </nav>
