@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Ilan;
+use App\Models\User;
 
-class Rezervation extends Model
+class Rezervasyon extends Model
 {
-    protected $fillable = ['oda_id', 'user_id', 'baslangic', 'bitis', 'total_gun', 'fiyat','total'];
+    use HasFactory;
+
 
     public function ilan()
     {

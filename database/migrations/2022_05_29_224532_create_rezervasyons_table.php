@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('reservation', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id')->unisigned();
-            $table->integer('ilan_id')->unisigned();
-            $table->date('start_date');
-            $table->date('end_date');
-            $table->integer('fiyat');
-            $table->integer('total');
+        Schema::create('rezervasyons', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
+            $table->text('fiyat');
+            $table->integer('user_id')->unsigned();
+            $table->integer('ilan_id')->unsigned();
+            $table->integer('kisi_sayisi');
+            $table->date('baslangic_tarihi',6);
+            $table->date('bitis_tarihi',6);
         });
     }
 
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reservation');
+        Schema::dropIfExists('rezervasyons');
     }
 };

@@ -1,7 +1,7 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3" style="opacity: 1;">
     <div class="container"
         style="background-color: rgba(255, 255, 255, 0.521); border-radius: 25px; padding-left: 25px; padding-right: 25px;">
-        <a class="navbar-brand" style="color: rgb(46, 32, 32); font-size: 40px;" href="{{ url('/')}}"><span
+        <a class="navbar-brand" style="color: rgb(46, 32, 32); font-size: 40px;" href="{{ url('/ilanliste')}}"><span
                 style="color:#cf3232;">O</span>telcim</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" data-toggle="collapse" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-bars" style="color:rgb(27, 27, 27); font-size:28px;"></i>
@@ -12,7 +12,7 @@
             @if(Auth::user())
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link text-dark" href="/messages">mesajlarım</a>
+                    <a class="nav-link text-dark" href="/rezervasyonlarım">Rezervasyonlarım</a>
                 </li>
             </ul>
             @if(Auth::user()->is_hotel_manager == 1)

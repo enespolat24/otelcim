@@ -12,13 +12,13 @@
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{ asset("assets/img/ilan/". $photos->photos[0]->name) }}" style="" height="600px">
+                    <img src="{{asset("assets/img/ilan/". $photos->photos[0]->name) }}" style="" height="600px">
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset("assets/img/ilan/". $photos->photos[1]->name) }}" style="" height="600px">
+                    <img src="{{asset("assets/img/ilan/". $photos->photos[1]->name) }}" style="" height="600px">
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ asset("assets/img/ilan/". $photos->photos[2]->name) }}" style="" height="600px">
+                    <img src="{{asset("assets/img/ilan/". $photos->photos[2]->name) }}" style="" height="600px">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
@@ -41,12 +41,23 @@
 
     <div class="col-md-4">
         <div class="card mb-4 text-center p-2">
+            @if(Auth::user()->reservations->where('ilan_id', $ilan->id)->first())
+            <p class="text-danger">Bu oda için hali hazırda {{Auth::user()->reservations->where('ilan_id', $ilan->id)->count()}} adet rezervasyonunuz var</p>
+            @endif
             <h1>{{$ilan->fiyat}} - Geceliği</h1>
             <label for="kisiSayi">Kişi Sayısı</label>
-            <input class="mx-auto my-2" type="number" id="kisiSayi" name="kisi_sayi" style="max-width: 150px;">
+            <form action="/rezervasyon-yap" method="POST">
+            @csrf
+            <input class="mx-auto form-control" type="number" id="kisiSayi" name="kisi_sayi" style="max-width: 150px;">
             <input type="hidden" name="ilan_id" value="{{$ilan->id}}">
             <input type="hidden" name="user_id" value="{{Auth::id()}}">
+            <input type="hidden" name="fiyat" value="{{$ilan->fiyat}}"><br>
+            <label for="kisiSayi">Başlangıç tarihi</label>
+            <input type="date" name="baslangic" class="form-control mx-auto" id="baslangic"  min="2018-01-01" max="2025-12-31"><br>
+            <label for="bitis">bitiş tarihi Sayısı</label>
+            <input type="date" class="form-control" name="bitis" id="bitis"  min="2018-01-01" max="2025-12-31"><br>
             <button type="submit" class="btn btn-primary">Rezervasyon yap</button>
+            </form>
         </div>
 
 

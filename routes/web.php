@@ -35,6 +35,7 @@ Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Route::get('/profilim', function(){
     return view('profil');
 })->middleware('auth');
+Route::get('rezervasyonlarım',[App\Http\Controllers\RezervasyonController::class,'index'])->middleware('auth');
 Route::get('ilan-edit/{id}', function($id){
 
         $questions = Question::query()->where('ilan_id', '=', $id)->get();
@@ -48,10 +49,11 @@ Route::get('ilan-edit/{id}', function($id){
         abort(403);
     }
 })->middleware('auth');
-Route::post('cevap-ekle' , [App\Http\Controllers\QuestionController::class,'cevapla'])->middleware('auth');
-Route::post('ilan-fiyat-guncelle/{id}', [App\Http\Controllers\IlanController::class,'fiyatGuncelle'])->middleware('auth');
-Route::post('ilan-baslik-aciklama-guncelle/{id}', [App\Http\Controllers\IlanController::class,'ilanBaslikAciklama'])->middleware('auth');
-
+Route::post('/cevap-ekle' , [App\Http\Controllers\QuestionController::class,'cevapla'])->middleware('auth');
+Route::post('/ilan-fiyat-guncelle/{id}', [App\Http\Controllers\IlanController::class,'fiyatGuncelle'])->middleware('auth');
+Route::post('/ilan-baslik-aciklama-guncelle/{id}', [App\Http\Controllers\IlanController::class,'ilanBaslikAciklama'])->middleware('auth');
+Route::post('/rezervasyon-yap', [App\Http\Controllers\RezervasyonController::class,'rezervasyonYap'])->middleware('auth');
+Route::post('rezervasyon-iptal/{id}', [App\Http\Controllers\RezervasyonController::class,'rezervasyonIptal'])->middleware('auth');
 
 
 Route::group(['middleware' => 'auth'], function () {
