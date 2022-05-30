@@ -20,7 +20,6 @@
                 <h3 class="card-title">{{$item->fiyat}}</h3>
                 <p class="card-text">{{Str::limit($item->aciklama, 50)}}</p>
                 <a href="/detay/{{$item->id}}" class="btn btn-secondary mb-2">DETAYLAR</a>
-                <a href="/chat/{{$item->user_id}}" class="btn btn-warning mb-2">MESAJ GÖNDER</a>
             </div>
         </div>
     </div>
