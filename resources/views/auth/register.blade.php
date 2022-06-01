@@ -1,14 +1,14 @@
 @extends('layouts.layout')
 @section('content')
-<div style="height: 200px; background-color: #062C30 "></div>
-<div style="background-color: #062C30">
-    <div class="container" style="background-color: #062C30;">
+<div style="height: 200px; background-color: #913434 "></div>
+<div style="background-color: #913434">
+    <div class="container" style="background-color: #913434;">
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card" style="background-color: #F5F5F5;">
-                    <div class="card-header text-center" style="color: #05595B">{{ __('Register') }}</div>
+            <div class="col-md-6">
+                <h1 style="color: #fff">{{ __('Register') }}</h1>
+                <div class="card" style="background: rgba(255, 255, 255, 0.521); border-radius: 18px;">
 
-                    <div class="card-body text-center" style="color: #05595B">
+                    <div class="card-body text-center">
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
 
@@ -74,7 +74,7 @@
 
                             <div class="row mb-0 ">
                                 <div class="col-md-6 offset-md-4 ">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-primary" style="background: #913434; border-color: #913434">
                                         {{ __('Register') }}
                                     </button>
                                 </div>
@@ -86,5 +86,5 @@
         </div>
     </div>
 </div>
-<div style="height: 200px; background-color: #062C30"></div>
+<div style="height: 200px; background-color: #913434"></div>
 @endsection

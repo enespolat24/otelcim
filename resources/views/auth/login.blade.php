@@ -1,15 +1,16 @@
 @extends('layouts.layout')
 
 @section('content')
-<div style="height: 200px; background-color: #062C30"></div>
-<div style="background-color: #062C30">
+<div style="height: 200px; background-color: #913434"></div>
+<div style="background-color: #913434">
     <div class="container" style="max-width: 60%">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card"style="background-color: #F5F5F5">
-                    <div class="card-header text-center" style="color: #05595B">{{ __('Login') }}</div>
+                <h1 style="color: #fff">{{ __('Login') }}</h1>
 
-                    <div class="card-body" style="color: #05595B">
+                <div class="card" style="background: rgba(255, 255, 255, 0.521); border-radius: 18px;">
+
+                    <div class="card-body">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
 
@@ -62,12 +63,12 @@
 
                             <div class="row mb-0">
                                 <div class="col-md-8 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                                    <button type="submit" class="btn btn-primary" style="background: #913434; border-color: #913434">
                                         {{ __('Login') }}
                                     </button>
 
                                     @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    <a class="btn btn-link" href="{{ route('password.request') }}" style="color: #913434;">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                     @endif
@@ -81,5 +82,5 @@
         </div>
     </div>
 </div>
-<div style="height: 200px; background-color: #062C30"></div>
+<div style="height: 200px; background-color: #913434"></div>
 @endsection

@@ -1,10 +1,7 @@
-<div class="container">
+<div class="container-fluid px-6" style="background-color: #913434;">
     <div class="row">
-    <footer class="d-flex flex-wrap justify-content-between col-sm align-items-center py-3 my-4 border-top">
-      <p class="col-md-4 mb-0" style="color: black;">&copy; 2022 <span style="color:red">O</span>telcim</p>
-      <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-        <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>
-      </a>
-    </footer>
+        <footer class="d-flex flex-wrap justify-content-center col-sm align-items-center py-3 my-4 border-top">
+            <p class="col-md-8 mb-0" style="color:#fff">&copy; 2022 Otelcim</p>
+        </footer>
+    </div>
 </div>
-  </div>

@@ -17,6 +17,12 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
+    <style>
+        * {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+        }
+    </style>
+
 </head>
 <style>
     @media only screen and (max-width: 760px) {
@@ -37,17 +43,17 @@
     <div class="banner-image w-100 vh-100 d-flex justify-content-center align-items-center"
         style="background-image: url({{ asset('assets/img/hotelbg.jpeg') }}); ">
         <div class="content text-center">
-            <div style="padding: 0.5;">
-                <h1 class="" style="color:#7e1313; ">Aradığınız Otel Burada</h1>
+            <div style="background-color:rgba(255, 255, 255, 0.521); padding: 100px; border-radius: 50px">
+                <h1 class="" style="color:#8f2121; ">Aradığınız Otel Burada</h1>
             </div>
         </div>
     </div>
 
     <div class=""
-        style="height: 600px; max-height: 600px;  background-image: linear-gradient(to bottom right, rgb(117, 95, 95), rgb(245, 245, 245));">
+        style="display:flex; align-items:center; height: 600px; max-height: 600px;  background-image: linear-gradient(to bottom right, rgb(117, 95, 95), rgb(245, 245, 245));">
         <div class="container">
             <div class="row text-center">
-                <h1 style="margin-top: 100px;"> <span style="color:#7e1313;">O</span>telcim <br> olarak önceliğimiz otel kiralamadan önce aklınızdaki soruları otel yetkilisine mesaj yoluyla aklınıza takılabilecek her şeyi sorabilmenizi sağlamak</p>
+                <h1> <span style="color:#8f2121;">O</span>telcim <br> olarak önceliğimiz otel kiralamadan önce aklınızdaki soruları otel yetkilisine mesaj yoluyla aklınıza takılabilecek her şeyi sorabilmenizi sağlamak</p>
             </div>
 
 
@@ -56,13 +62,13 @@
 
     </div>
 
-    <div style="height: 500px; background-color: rgb(165, 126, 126);">
+    <div class="d-flex align-items-center" style="height: 500px; background-color: #913434;">
 
         <div class="container">
             <div class="row">
-                <h1 class="col sm text-center" style="margin-top: 200px;">Sen de Hemen <span style="color: #7e1313;">
-                        O</span>tel aramak için<br><br><a href="/ilanliste"
-                        style="color: #ffffff; font-size: 100px; font-family:  'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">TIKLA<span style="color: #7e1313;">!</span></a> </h1>
+                <h1 class="col sm text-center">Sen de Hemen <span style="color: rgb(245, 245, 245);">
+                        O</span>tel aramak için<br><a href="/ilanliste"
+                        style="color: #ffffff; font-size: 100px">Keşfet<span style="color: rgb(245, 245, 245);">!</span></a> </h1>
             </div>
         </div>
     </div>

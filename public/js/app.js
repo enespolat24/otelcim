@@ -5423,9 +5423,6 @@ Vue.component('navbar', (__webpack_require__(/*! ./components/navbar.vue */ "./r
 var app = new Vue({
   el: '#app'
 });
-$('.navbar-nav>li>a').on('click', function () {
-  $('.navbar-collapse').collapse('hide');
-});
 
 /***/ }),
 
