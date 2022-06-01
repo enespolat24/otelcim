@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="bg-success" style="padding: 100px;"></div>
+<div class="" style="background-color:#913434;padding: 100px;"></div>
 <section class="bg-light">
     <div class="container">
         <div class="row">

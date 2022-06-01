@@ -9,7 +9,7 @@
         {{-- <img src="{{ asset(" assets/img/ilan/". $photos->photos[0]->name) }}" style=""> --}}
 
 
-        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+        <div id="carouselExampleControls" class="carousel slide container" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src="{{asset("assets/img/ilan/". $photos->photos[0]->name) }}" style="" height="600px">
@@ -56,7 +56,7 @@
             <input type="date" name="baslangic" class="form-control mx-auto" id="baslangic"  min="2018-01-01" max="2025-12-31"><br>
             <label for="bitis">bitiş tarihi Sayısı</label>
             <input type="date" class="form-control" name="bitis" id="bitis"  min="2018-01-01" max="2025-12-31"><br>
-            <button type="submit" class="btn btn-primary">Rezervasyon yap</button>
+            <button type="submit" class="btn btn-primary" style="background-color: #913434!important; border-color:#913434">Rezervasyon yap</button>
             </form>
         </div>
 

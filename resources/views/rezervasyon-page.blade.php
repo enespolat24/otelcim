@@ -2,7 +2,7 @@
 
 
 @section('content')
-<div style="padding: 80px; background-color: rgb(17, 100, 136);"></div>
+<div style="padding: 80px; background-color: #913434"></div>
 <div class="py-5">
     <div class="container">
         @foreach ($rezervasyon as $item)

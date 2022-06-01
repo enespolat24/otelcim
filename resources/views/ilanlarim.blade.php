@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div style="background-color: rgb(183, 183, 40); padding:80px;"></div>
+<div style="background-color:#913434; padding:80px;"></div>
 @foreach ($ilanlar as $item)
 <div class="row py-2 mx-auto">
 
@@ -11,8 +11,8 @@
                 <h6 class="card-subtitle text-danger">fiyat : {{$item->aciklama}}</h6>
                 <p class="card-text p-y-1">kişi sayısı : {{$item->fiyat}} </p>
             </div>
-                <a href="ilan-edit/{{$item->id}}" type="submit" class="btn btn-success">ilanı düzenle</a>
-                <a href="/detay/{{$item->id}}" class="btn btn-warning">Odayı görüntüle</a>
+                <a href="ilan-edit/{{$item->id}}" type="submit" class="btn btn-warning" style="">ilanı düzenle</a>
+                <a href="/detay/{{$item->id}}" class="btn btn-secondary">Odayı görüntüle</a>
         </div>
     </div>
 
