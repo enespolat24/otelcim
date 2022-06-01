@@ -4,7 +4,7 @@
 @section('content')
 <div class="" style="padding: 70px; background-color:#913434;"></div>
 <div>
-    <div class="row pb-3 text-center">
+    <div class="row pb-3 text-center w-100">
         @foreach($ilan as $item)
         <div class="col-sm-3 p-4">
             <div class="card">
