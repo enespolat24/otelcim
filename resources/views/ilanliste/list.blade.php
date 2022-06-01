@@ -4,9 +4,9 @@
 @section('content')
 <div class="bg-danger" style="padding: 70px;"></div>
 <div style="background: rgb(194, 192, 192);">
-    @foreach($ilan as $item)
     <div class="col-sm-6 d-flex pb-3 text-center">
-        <div class="card card-inverse card-danger mt-2">
+        @foreach($ilan as $item)
+        <div class="card card-inverse card-danger mx-4 mt-2">
             <div class="panel-heading preview">
                 <img src="{{ asset("assets/img/ilan/".$item->photos[0]->name) }}" height="300px" width="300px"
                 style="border-radius: 25px; overflow: hidden">
@@ -22,8 +22,8 @@
                 <a href="/detay/{{$item->id}}" class="btn btn-secondary mb-2">DETAYLAR</a>
             </div>
         </div>
+        @endforeach
     </div>
-    @endforeach
 </div>
 
 @endsection

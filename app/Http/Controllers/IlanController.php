@@ -157,4 +157,10 @@ class IlanController extends Controller
         $ilan->save();
         return redirect()->back();
     }
+
+    public function ilanlarim()
+    {
+        $ilanlar = Ilan::where('user_id', '=', auth()->user()->id)->get();
+        return view('ilanlarim', compact('ilanlar'));
+    }
 }
