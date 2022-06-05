@@ -36,7 +36,9 @@ Route::get('/profilim', function(){
     return view('profil');
 })->middleware('auth');
 Route::get('rezervasyonlarım',[App\Http\Controllers\RezervasyonController::class,'index'])->middleware('auth');
+Route::post('/changePassword', [App\Http\Controllers\HomeController::class, 'changePasswordPost'])->name('changePasswordPost');
 Route::get('/ilanlarim',[App\Http\Controllers\IlanController::class,'ilanlarim'])->middleware('auth');
+Route::get('profil-guncelle',[App\Http\Controllers\UserController::class,'profilGuncelle'])->middleware('auth');
 Route::get('ilan-edit/{id}', function($id){
 
         $questions = Question::query()->where('ilan_id', '=', $id)->get();

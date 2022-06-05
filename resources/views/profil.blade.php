@@ -10,7 +10,7 @@
                         <div class="row align-items-center">
                             <div class="col-lg-6 mb-4 mb-lg-0">
                                 <img src="{{Gravatar::get(Auth::user()->email)}}" alt="..." width=300>
-                                <a class="btn btn-warning">Profili düzenle</a>
+                                <a href="profil-guncelle" class="btn btn-warning">Profili düzenle</a>
                             </div>
                             <p></p>
                             <div class="col-lg-6 px-xl-10">
