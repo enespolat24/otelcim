@@ -3,7 +3,7 @@
 
 @section('content')
 <div style="padding: 90px; background-color:#913434;"></div>
-<div class="container" style="margin-top: 100px;"><strong>Şifre güncelleme</strong>
+<div class="container -danger" style="margin-top: 100px;"><strong class="text-danger">Şifre güncelleme</strong>
     <form class="form-horizontal container mt-2" method="POST" action="{{ " /change-password" }}">
         {{ csrf_field() }}
 
@@ -53,14 +53,16 @@
         </div>
     </form>
 </div>
-<div class="container">
+<div class="container mt-3 text-danger">
+<label>İsim güncelle</label>
+<div class="">
     <form class="form-horizontal container mt-4" method="POST" action="{{ " /change-name" }}">
         {{ csrf_field() }}
-        <label>İsim güncelle</label>
-        <input type="email" class="form-control w-50" name="email" value="{{$user->name}}">
+        <input type="text" class="form-control w-50" name="email" value="{{$user->name}}">
         <button class="btn btn-success mt-3 mb-3" type="submit">Güncelle</button>
     </form>
 
+</div>
 </div>
 <div style="padding:70px;"></div>
 @endsection
