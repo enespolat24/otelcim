@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ilan;
 use App\Models\Question;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -141,8 +142,11 @@ class IlanController extends Controller
         $questions = Question::query()->where('ilan_id', '=', $id)->get();
 
         $ilan = Ilan::find($id);
-        $photos = Ilan::find($id);
-        return view('ilanliste.ilan-detay', compact('ilan', 'questions', 'yetkili', 'photos'));
+        $mediaItems = $ilan->getMedia();
+        $firstPhoto = $mediaItems[0]->getUrl();
+        $secondPhoto = $mediaItems[1]->getUrl();
+        $thirdPhoto = $mediaItems[2]->getUrl();
+        return view('ilanliste.ilan-detay', compact('ilan', 'questions', 'yetkili', 'firstPhoto','secondPhoto','thirdPhoto'));
     }
     public function fiyatGuncelle(Request $request,$id){
         $ilan = Ilan::find($id);
@@ -162,5 +166,43 @@ class IlanController extends Controller
     {
         $ilanlar = Ilan::where('user_id', '=', auth()->user()->id)->get();
         return view('ilanlarim', compact('ilanlar'));
+    }
+    public function ilanEkleSayfa(Request $request){
+        $userId = Auth::user()->id;
+        $user = User::find($userId);
+        if(! $user->is_hotel_manager){
+            abort(403);
+        }
+        return view('ilan-ekle');
+    }
+    public function ilanEkle(Request $request)
+    {
+        $userId = Auth::user()->id;
+        $user = User::find($userId);
+        if(! $user->is_hotel_manager){
+            abort(403);
+        }
+
+        $ilan = new Ilan();
+        $ilan->baslik = $request->title;
+        $ilan->aciklama = $request->aciklama;
+        $ilan->fiyat = $request->fiyat;
+        $ilan->sehir = $request->sehir;
+        $ilan->ilce = $request->ilce;
+        $ilan->adres = $request->adres;
+        $ilan->user_id = $userId;
+
+        $ilan->photos[0] = $request->file('first-img');
+        $ilan->photos[1] = $request->file('second-img');
+        $ilan->photos[2] = $request->file('third-img');
+
+        $ilan->addMediaFromRequest('first-img')->toMediaCollection();
+        $ilan->addMediaFromRequest('second-img')->toMediaCollection();
+        $ilan->addMediaFromRequest('third-img')->toMediaCollection();
+
+
+        $ilan->save();
+
+        return redirect()->back();
     }
 }

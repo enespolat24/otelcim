@@ -50,6 +50,8 @@ Route::get('ilan-edit/{id}', function($id){
         abort(403);
     }
 })->middleware('auth');
+Route::get('ilan-ekle',[App\Http\Controllers\IlanController::class,'ilanEkleSayfa'])->middleware('auth');
+Route::post('ilan-ekle-form',[App\Http\Controllers\IlanController::class,'ilanEkle'])->middleware('auth');
 Route::post('/cevap-ekle' , [App\Http\Controllers\QuestionController::class,'cevapla'])->middleware('auth');
 Route::post('/ilan-fiyat-guncelle/{id}', [App\Http\Controllers\IlanController::class,'fiyatGuncelle'])->middleware('auth');
 Route::post('/ilan-baslik-aciklama-guncelle/{id}', [App\Http\Controllers\IlanController::class,'ilanBaslikAciklama'])->middleware('auth');

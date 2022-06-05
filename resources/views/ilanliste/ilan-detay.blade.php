@@ -12,13 +12,13 @@
         <div id="carouselExampleControls" class="carousel slide container" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="{{asset("assets/img/ilan/". $photos->photos[0]->name) }}" style="" height="600px">
+                    <img src="{{asset($firstPhoto) }}" style="" height="600px">
                 </div>
                 <div class="carousel-item">
-                    <img src="{{asset("assets/img/ilan/". $photos->photos[1]->name) }}" style="" height="600px">
+                    <img src="{{asset($secondPhoto) }}" style="" height="600px">
                 </div>
                 <div class="carousel-item">
-                    <img src="{{asset("assets/img/ilan/". $photos->photos[2]->name) }}" style="" height="600px">
+                    <img src="{{asset($thirdPhoto) }}" style="" height="600px">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"

@@ -6,10 +6,14 @@
 <div>
     <div class="row pb-3 text-center w-100">
         @foreach($ilan as $item)
+        @php
+            $first_img = $item->getMedia();
+            $img = $first_img[0]->getUrl();
+        @endphp
         <div class="col-sm-3 p-4">
             <div class="card">
                 <div class="panel-heading preview" >
-                    <img class="w-100" src="{{ asset("assets/img/ilan/".$item->photos[0]->name) }}"
+                    <img class="w-100" src="{{ asset($img) }}"
                     style="overflow: hidden; height:230px!important; object-fit:cover;">
                 </div>
                 <div class="panel-body text-center">
