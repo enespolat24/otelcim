@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.layout')
 @section('content')
 <div class="" style="background-color:#913434;padding: 100px;"></div>
 <section class="bg-light">

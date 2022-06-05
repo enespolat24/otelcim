@@ -71,10 +71,15 @@
                                         name="password_confirmation" required autocomplete="new-password">
                                 </div>
                             </div>
+                            <div class="">
+                                <input class="form-check-input mr-2" type="checkbox" name="manager" id="manager">
+                                <label class="form-check-label ml-2">Otel Yöneticisi olarak başvurmak istiyorum</label>
+                            </div>
 
                             <div class="row mb-0 ">
                                 <div class="col-md-6 offset-md-4 ">
-                                    <button type="submit" class="btn btn-primary" style="background: #913434; border-color: #913434">
+                                    <button type="submit" class="btn btn-primary"
+                                        style="background: #913434; border-color: #913434">
                                         {{ __('Register') }}
                                     </button>
                                 </div>

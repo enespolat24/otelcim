@@ -1,14 +1,15 @@
 @extends('layouts.layout')
+@section('content')
 <div style="padding: 10em"></div>
 <form action="/ilan-ekle-form" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="image container">
-        <label><h4>Birinci görsel</h4></label>
-        <input type="file" class="form-control w-50" required name="first-img" required>
-        <label><h4>ikinci görsel</h4></label>
-        <input type="file" class="form-control w-50" required name="second-img" required>
-        <label><h4>üçüncü görsel</h4></label>
-        <input type="file" class="form-control w-50" required name="third-img" required>
+        <label class="mt-2"><h4>Birinci görsel</h4></label>
+        <input type="file" class="form-control w-50 mt-2" required name="first-img" required>
+        <label class="mt-2"><h4>ikinci görsel</h4></label>
+        <input type="file" class="form-control w-50 mt-2" required name="second-img" required>
+        <label class="mt-2"><h4>üçüncü görsel</h4></label>
+        <input type="file" class="form-control w-50 mt-2" required name="third-img" required>
 
         <div class="mt-4"></div>
         <label class="mt-2"><h4> Başlık</h4></label>
@@ -23,7 +24,7 @@
 
         <label class="mt-2"><h4>İlçe</h4></label>
         <input type="text" class="form-control w-25 mt-2" name="ilce" required>
-        <label><h4> Adres</h4></label>
+        <label class="mt-2"><h4> Adres</h4></label>
         <textarea type="text" rows="5" class="form-control w-50 mt-2" name="adres" required></textarea>
 
         <div class="post_button mt-4">
@@ -34,3 +35,4 @@
 
 
 </form>
+@endsection

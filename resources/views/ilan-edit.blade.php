@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-
+@section('content')
 
 <div style="height: 10em; background-color: rgb(202, 79, 79)"></div>
 <div class="row g-5 p-4">
@@ -113,3 +113,4 @@
         </div>
     </div>
 </div>
+@endsection

@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('layouts.layout')
+
 @section('content')
 <div style="background-color:#913434; padding:80px;"></div>
 <div class="text-center">
