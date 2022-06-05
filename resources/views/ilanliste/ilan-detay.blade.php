@@ -32,9 +32,14 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
+        <div class="container mt-2">
+            <h4 class="text-danger">Şehir : {{$ilan->sehir}}</h4>
+            <h4 class="text-danger">ilçe : {{$ilan->ilce}}</h4>
+            <h4 class="text-danger">adres : {{$ilan->adres}}</h4>
+        </div>
 
 
-        <h1 class="mt-2 text-center" style="margin-top: 1em!important; margin-left: 3rem; font-family: 'Courier New', Courier, monospace">{{$ilan->baslik}}</h1>
+        <h1 class="mt-2 text-center mb-4" style="margin-top: 1em!important; margin-left: 3rem; font-family: 'Courier New', Courier, monospace">{{$ilan->baslik}}</h1>
         <h5 class="px-4" style="font-family: 'Courier New', Courier, monospace;">{{$ilan->aciklama}}</h5>
 
     </div>
