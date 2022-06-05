@@ -15,18 +15,14 @@
                             <p></p>
                             <div class="col-lg-6 px-xl-10">
                                 <div class="d-lg-inline-block py-1-9 px-1-9 px-sm-6 mb-1-9 rounded">
-                                    <h3 class="h2 text-dark mb-0">{{Auth::user()->name}}</h3>
+                                    <h3 class="h2 mb-0">{{Auth::user()->name}}</h3>
                                 </div>
                                 <ul class="list-unstyled mb-1-9">
                                     <br>
-                                    @if(Auth::user()->phone)
+                                    @if(Auth::user()->email)
                                     <li class="display-28"><span
-                                            class="display-26 text-secondary me-2 font-weight-600">Telefon:</span>
-                                        {{Auth::user()->phone}}</li>
-                                    @else
-                                    <li class="display-28"><span
-                                            class="display-26 text-secondary me-2 font-weight-600">Telefon:</span>
-                                        lütfen hesabınıza telefon numaranızı ekleyin</li>
+                                            class="display-26 text-secondary me-2 font-weight-700">Email :</span>
+                                        {{Auth::user()->email}}</li>
                                     @endif
                                 </ul>
 

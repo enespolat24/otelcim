@@ -3,6 +3,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Rezervasyon;
 use App\Models\User;
+use GrahamCampbell\ResultType\Success;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
@@ -38,7 +39,15 @@ public function changePasswordPost(Request $request)
     $user->password = bcrypt($request->get('new-password'));
     $user->save();
 
-    return redirect()->back()->with("success","Password successfully changed!");
+    return redirect()->back();
+}
+
+public function changeName(Request $request)
+{
+    $userId = Auth::user()->id;
+    $user = User::find($userId);
+    $user->name = $request->get('name');
+    return redirect()->back();
 }
 
 }
