@@ -2,8 +2,8 @@
 
 
 @section('content')
-<div style="padding: 100px"></div>
-<div class="container"><strong>Şifre güncelleme</strong>
+<div style="padding: 90px; background-color:#913434;"></div>
+<div class="container" style="margin-top: 100px;"><strong>Şifre güncelleme</strong>
     <form class="form-horizontal container mt-2" method="POST" action="{{ " /change-password" }}">
         {{ csrf_field() }}
 
@@ -46,7 +46,7 @@
 
         <div class="form-group">
             <div class="col-md-6 col-md-offset-4">
-                <button type="submit" class="btn btn-primary mt-2">
+                <button type="submit" class="btn btn-success mt-2">
                     Şifreyi Güncelle
                 </button>
             </div>
