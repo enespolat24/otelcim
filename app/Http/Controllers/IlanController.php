@@ -197,8 +197,8 @@ class IlanController extends Controller
         $ilan->photos[2] = $request->file('third-img');
 
         $ilan->addMediaFromRequest('first-img')->withCustomProperties(['order' => 0])->toMediaCollection();
-        $ilan->addMediaFromRequest('second-img')->withCustomProperties(['order' => 0])->toMediaCollection();
-        $ilan->addMediaFromRequest('third-img')->withCustomProperties(['order' => 0])->toMediaCollection();
+        $ilan->addMediaFromRequest('second-img')->withCustomProperties(['order' => 1])->toMediaCollection();
+        $ilan->addMediaFromRequest('third-img')->withCustomProperties(['order' => 2])->toMediaCollection();
 
 
         $ilan->save();
