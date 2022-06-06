@@ -143,10 +143,9 @@ class IlanController extends Controller
         $questions = Question::query()->where('ilan_id', '=', $id)->get();
 
         $ilan = Ilan::find($id);
-        $mediaItems = $ilan->getMedia();
-        $firstPhoto = $mediaItems[0]->getUrl();
-        $secondPhoto = $ilan->getMedia()->where('custom_properties->order', 0)->first();
-        $thirdPhoto = $mediaItems[2]->getUrl();
+        $firstPhoto = $ilan->getMedia("default",["order" => 0])->first()->getUrl();
+        $secondPhoto = $ilan->getMedia("default",["order" => 1])->first()->getUrl();
+        $thirdPhoto = $ilan->getMedia("default",["order" => 2])->first()->getUrl();
         return view('ilanliste.ilan-detay', compact('ilan', 'questions', 'yetkili', 'firstPhoto','secondPhoto','thirdPhoto'));
     }
     public function fiyatGuncelle(Request $request,$id){
@@ -197,9 +196,9 @@ class IlanController extends Controller
         $ilan->photos[1] = $request->file('second-img');
         $ilan->photos[2] = $request->file('third-img');
 
-        $ilan->addMediaFromRequest('first-img')->toMediaCollection();
-        $ilan->addMediaFromRequest('second-img')->toMediaCollection();
-        $ilan->addMediaFromRequest('third-img')->toMediaCollection();
+        $ilan->addMediaFromRequest('first-img')->withCustomProperties(['order' => 0])->toMediaCollection();
+        $ilan->addMediaFromRequest('second-img')->withCustomProperties(['order' => 0])->toMediaCollection();
+        $ilan->addMediaFromRequest('third-img')->withCustomProperties(['order' => 0])->toMediaCollection();
 
 
         $ilan->save();
