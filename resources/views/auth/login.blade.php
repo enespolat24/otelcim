@@ -6,7 +6,7 @@
     <div class="container" style="max-width: 60%">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <h1 style="color: #fff">{{ __('Login') }}</h1>
+                <h1 style="color: #fff">Giriş Yap</h1>
 
                 <div class="card" style="background: rgba(255, 255, 255, 0.521); border-radius: 18px;">
 
@@ -15,8 +15,7 @@
                             @csrf
 
                             <div class="row mb-3">
-                                <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address')
-                                    }}</label>
+                                <label for="email" class="col-md-4 col-form-label text-md-end">Email adresi</label>
 
                                 <div class="col-md-6">
                                     <input id="email" type="email"
@@ -32,8 +31,7 @@
                             </div>
 
                             <div class="row mb-3">
-                                <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password')
-                                    }}</label>
+                                <label for="password" class="col-md-4 col-form-label text-md-end">Şifre</label>
 
                                 <div class="col-md-6">
                                     <input id="password" type="password"
@@ -55,7 +53,7 @@
                                             old('remember') ? 'checked' : '' }}>
 
                                         <label class="form-check-label" for="remember">
-                                            {{ __('Remember Me') }}
+                                            Heni Hatırla
                                         </label>
                                     </div>
                                 </div>
@@ -64,12 +62,12 @@
                             <div class="row mb-0">
                                 <div class="col-md-8 offset-md-4">
                                     <button type="submit" class="btn btn-primary" style="background: #913434; border-color: #913434">
-                                        {{ __('Login') }}
+                                        Giriş Yap
                                     </button>
 
                                     @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}" style="color: #913434;">
-                                        {{ __('Forgot Your Password?') }}
+                                        Şifrenizi mi unuttunuz ?
                                     </a>
                                     @endif
                                 </div>

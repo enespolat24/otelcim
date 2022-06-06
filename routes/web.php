@@ -40,22 +40,11 @@ Route::post('/change-password', [App\Http\Controllers\UserController::class, 'ch
 Route::get('/ilanlarim',[App\Http\Controllers\IlanController::class,'ilanlarim'])->middleware('auth');
 Route::get('profil-guncelle',[App\Http\Controllers\UserController::class,'profilGuncelle'])->middleware('auth');
 Route::post('/change-email', [App\Http\Controllers\UserController::class, 'changeEmailPost'])->middleware('auth');
-Route::get('ilan-edit/{id}', function($id){
-
-        $questions = Question::query()->where('ilan_id', '=', $id)->get();
-
-        $ilan = Ilan::find($id);
-        $photos = Ilan::find($id);
-    if($ilan->user_id == Auth::user()->id){
-        return view('ilan-edit', compact('ilan','photos','questions'));
-    }
-    else{
-        abort(403);
-    }
-})->middleware('auth');
+Route::get('ilan-edit/{id}', [App\Http\Controllers\IlanController::class, 'ilanEdit'])->middleware('auth');
 Route::get('ilan-ekle',[App\Http\Controllers\IlanController::class,'ilanEkleSayfa'])->middleware('auth');
 Route::post('ilan-ekle-form',[App\Http\Controllers\IlanController::class,'ilanEkle'])->middleware('auth');
 Route::post('/cevap-ekle' , [App\Http\Controllers\QuestionController::class,'cevapla'])->middleware('auth');
+Route::post('/ilan-fotograf-guncelle', [App\Http\Controllers\IlanController::class, 'ilanFotografGuncelle'])->middleware('auth');
 Route::post('/ilan-fiyat-guncelle/{id}', [App\Http\Controllers\IlanController::class,'fiyatGuncelle'])->middleware('auth');
 Route::post('/ilan-baslik-aciklama-guncelle/{id}', [App\Http\Controllers\IlanController::class,'ilanBaslikAciklama'])->middleware('auth');
 Route::post('/rezervasyon-yap', [App\Http\Controllers\RezervasyonController::class,'rezervasyonYap'])->middleware('auth');

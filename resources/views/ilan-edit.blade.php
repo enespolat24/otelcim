@@ -8,29 +8,35 @@
 
         {{-- <img src="{{ asset(" assets/img/ilan/". $photos->photos[0]->name) }}" style=""> --}}
 
-
-        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="{{ asset("assets/img/ilan/".$photos->photos[0]->name)}}" style="" height="600px">
+        <div style="">
+            <form action="/ilan-fotograf-guncelle" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input type="hidden" name="id" value="{{$ilan->id}}">
+                <div class="d-flex">
+                    <div>
+                        <img class="w-10 h-10" src="{{$firstPhoto}}" alt="" style="object-fit:cover;" height="100" width="100"><br/>
+                        <label for="firstPhoto"> İlk Görsel</label><br />
+                        <input type="file" name="firstPhoto" ">
+                    </div>
+                    <div class="p-4"></div>
+                    <div>
+                        <div>
+                        <img class="w-10 h-10" src="{{$secondPhoto}}" alt=""  height="100" width="100"
+                            style="object-fit:cover;"><br/>
+                        </div>
+                        <label for="firstPhoto"> ikinci Görsel</label><br />
+                        <input type="file" name="secondPhoto" ">
+                    </div>
+                    <div class="p-4"></div>
+                    <div>
+                        <img class="w-10 h-10" src="{{$thirdPhoto}}" alt=""  height="100" width="100"
+                            style="object-fit:cover;"><br />
+                        <label for="firstPhoto"> üçüncü Görsel</label><br />
+                        <input type="file" name="thirdPhoto" ">
+                    </div>
                 </div>
-                <div class="carousel-item">
-                    <img src="{{ asset("assets/img/ilan/".$photos->photos[1]->name) }}" style="" height="600px">
-                </div>
-                <div class="carousel-item">
-                    <img src="{{ asset("assets/img/ilan/".$photos->photos[2]->name) }}" style="" height="600px">
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true" style="color: red;"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+                <button class="btn btn-success mt-3" type="submit">Görselleri güncelle</button>
+            </form>
         </div>
         <div class="m-5">
             <form action="/ilan-baslik-aciklama-guncelle/{{$ilan->id}}" method="POST">
@@ -38,7 +44,7 @@
                 {{-- <h1 class="mt-2 text-center"
                     style="margin-top: 1em!important; margin-left: 3rem; font-family: 'Courier New', Courier, monospace">
                     {{$ilan->baslik}}</h1> --}}
-                    <label for="baslik">İlan Başlığı</label>
+                <label for="baslik">İlan Başlığı</label>
                 <input type="text" class="form-control mb-5" id="baslik" name="baslik" value="{{$ilan->baslik}}">
                 <label for="baslik">İlan Açıklaması</label>
                 <textarea class="form-control" id="aciklama" rows="10" name="aciklama">{{$ilan->aciklama}}</textarea>
@@ -51,7 +57,7 @@
             <h1>{{$ilan->fiyat}} - Geceliği</h1>
             <form method="POST" action="/ilan-fiyat-guncelle/{{$ilan->id}}">
                 @csrf
-                <input type="text" name="fiyat" id="fiyat">
+                <input type="text" name="fiyat" id="fiyat" placeholder="fiyatı giriniz">
 
                 <button type="submit" class="mt-2 btn btn-success">fiyat güncelle</button>
             </form>

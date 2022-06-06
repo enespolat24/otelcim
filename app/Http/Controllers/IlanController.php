@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class IlanController extends Controller
 {
@@ -144,7 +145,7 @@ class IlanController extends Controller
         $ilan = Ilan::find($id);
         $mediaItems = $ilan->getMedia();
         $firstPhoto = $mediaItems[0]->getUrl();
-        $secondPhoto = $mediaItems[1]->getUrl();
+        $secondPhoto = $ilan->getMedia()->where('custom_properties->order', 0)->first();
         $thirdPhoto = $mediaItems[2]->getUrl();
         return view('ilanliste.ilan-detay', compact('ilan', 'questions', 'yetkili', 'firstPhoto','secondPhoto','thirdPhoto'));
     }
@@ -201,6 +202,43 @@ class IlanController extends Controller
         $ilan->addMediaFromRequest('third-img')->toMediaCollection();
 
 
+        $ilan->save();
+
+        return redirect()->back();
+    }
+    public function ilanEdit(Request $request, $id)
+    {
+        $questions = Question::query()->where('ilan_id', '=', $id)->get();
+        $ilan = Ilan::find($id);
+        $firstPhoto = $ilan->getMedia("default",["order" => 0])->first()->getUrl();
+        $secondPhoto = $ilan->getMedia("default",["order" => 1])->first()->getUrl();
+        $thirdPhoto = $ilan->getMedia("default",["order" => 2])->first()->getUrl();
+
+        $ilan = Ilan::find($id);
+        if($ilan->user_id == Auth::user()->id){
+            return view('ilan-edit', compact('ilan','questions','firstPhoto','secondPhoto','thirdPhoto'));
+        }
+        else{
+            abort(403);
+        }
+    }
+    public function ilanFotografGuncelle(Request $request){
+
+        $ilan = Ilan::find($request->id);
+        $ilanmedia = $ilan->getMedia();
+
+        if ($request->file('firstPhoto')) {
+            $ilan->getMedia("default",["order" => 0])->first()->delete();
+            $ilan->addMediaFromRequest('firstPhoto')->withCustomProperties(['order' => 0])->toMediaCollection();
+        }
+        if($request->file('secondPhoto')){
+            $ilan->getMedia("default",["order" => 1])->first()->delete();
+            $ilan->addMediaFromRequest('secondPhoto')->withCustomProperties(['order' => 1])->toMediaCollection();
+        }
+        if ($request->file('thirdPhoto')) {
+            $ilan->getMedia("default",["order" => 2])->first()->delete();
+            $ilan->addMediaFromRequest('thirdPhoto')->withCustomProperties(['order' => 2])->toMediaCollection();
+        }
         $ilan->save();
 
         return redirect()->back();

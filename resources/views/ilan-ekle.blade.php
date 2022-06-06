@@ -5,11 +5,11 @@
     @csrf
     <div class="image container">
         <label class="mt-2"><h4>Birinci görsel</h4></label>
-        <input type="file" class="form-control w-50 mt-2" required name="first-img" required>
+        <input type="file" class="form-control w-50 mt-2" name="first-img" required>
         <label class="mt-2"><h4>ikinci görsel</h4></label>
-        <input type="file" class="form-control w-50 mt-2" required name="second-img" required>
+        <input type="file" class="form-control w-50 mt-2" name="second-img" required>
         <label class="mt-2"><h4>üçüncü görsel</h4></label>
-        <input type="file" class="form-control w-50 mt-2" required name="third-img" required>
+        <input type="file" class="form-control w-50 mt-2" name="third-img" required>
 
         <div class="mt-4"></div>
         <label class="mt-2"><h4> Başlık</h4></label>
