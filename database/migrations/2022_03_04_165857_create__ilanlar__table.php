@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('baslik');
-            $table->string('aciklama');
+            $table->longText('aciklama');
             $table->string('fiyat');
             $table->string('sehir');
             $table->string('ilce');
