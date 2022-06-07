@@ -21,6 +21,7 @@ class RezervasyonController extends Controller
         $rezervasyon->ilan_id = $request->ilan_id;
         $rezervasyon->user_id = $request->user_id;
         $rezervasyon->baslangic_tarihi = $request->baslangic;
+        $rezervasyon->fiyat = $request->fiyat;
         $rezervasyon->bitis_tarihi = $request->bitis;
         $rezervasyon->kisi_sayisi = $request->kisi_sayi;
         $rezervasyon->save();
