@@ -140,7 +140,7 @@ class IlanController extends Controller
     {
         $yetkili = Ilan::find($id);
 
-        $questions = Question::query()->where('ilan_id', '=', $id)->get();
+        $questions = Question::query()->where('ilan_id', '=', $id)->orderby('created_at', 'desc')->get();
 
         $ilan = Ilan::find($id);
         $firstPhoto = $ilan->getMedia("default",["order" => 0])->first()->getUrl();
@@ -164,7 +164,7 @@ class IlanController extends Controller
 
     public function ilanlarim()
     {
-        $ilanlar = Ilan::where('user_id', '=', auth()->user()->id)->get();
+        $ilanlar = Ilan::where('user_id', '=', auth()->user()->id)->orderBy('created_at', 'desc')->get();
         return view('ilanlarim', compact('ilanlar'));
     }
     public function ilanEkleSayfa(Request $request){

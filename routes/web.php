@@ -37,9 +37,11 @@ Route::get('/profilim', function(){
 })->middleware('auth');
 Route::get('rezervasyonlarım',[App\Http\Controllers\RezervasyonController::class,'index'])->middleware('auth');
 Route::post('/change-password', [App\Http\Controllers\UserController::class, 'changePasswordPost'])->middleware('auth');
+Route::post('/change-name', [App\Http\Controllers\UserController::class, 'changeName'])->middleware('auth');
 Route::get('/ilanlarim',[App\Http\Controllers\IlanController::class,'ilanlarim'])->middleware('auth');
 Route::get('profil-guncelle',[App\Http\Controllers\UserController::class,'profilGuncelle'])->middleware('auth');
 Route::post('/change-email', [App\Http\Controllers\UserController::class, 'changeEmailPost'])->middleware('auth');
+Route::post('/soru-sor', [App\Http\Controllers\QuestionController::class, 'soruSor'])->middleware('auth');
 Route::get('ilan-edit/{id}', [App\Http\Controllers\IlanController::class, 'ilanEdit'])->middleware('auth');
 Route::get('ilan-ekle',[App\Http\Controllers\IlanController::class,'ilanEkleSayfa'])->middleware('auth');
 Route::post('ilan-ekle-form',[App\Http\Controllers\IlanController::class,'ilanEkle'])->middleware('auth');

@@ -10,7 +10,7 @@ class RezervasyonController extends Controller
 {
     public function index(Request $request)
     {
-        $rezervasyon = Rezervasyon::query()->where('user_id', '=', Auth::user()->id)->get();
+        $rezervasyon = Rezervasyon::query()->where('user_id', '=', Auth::user()->id)->orderBy('created_at', 'desc')->get();
 
         return view('rezervasyon-page', compact('rezervasyon'));
     }

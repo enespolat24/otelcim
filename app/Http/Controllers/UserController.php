@@ -46,7 +46,8 @@ public function changeName(Request $request)
 {
     $userId = Auth::user()->id;
     $user = User::find($userId);
-    $user->name = $request->get('name');
+    $user->name = $request->name;
+    $user->save();
     return redirect()->back();
 }
 

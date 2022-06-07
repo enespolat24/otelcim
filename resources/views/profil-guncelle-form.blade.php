@@ -58,7 +58,7 @@
 <div class="">
     <form class="form-horizontal container mt-4" method="POST" action="{{ " /change-name" }}">
         {{ csrf_field() }}
-        <input type="text" class="form-control w-50" name="email" value="{{$user->name}}">
+        <input type="text" class="form-control w-50" name="name" value="{{$user->name}}">
         <button class="btn btn-success mt-3 mb-3" type="submit">Güncelle</button>
     </form>
 

@@ -6,6 +6,11 @@
 <a class="btn btn-success mt-2" href="ilan-ekle">ILAN OLUŞTUR</a>
 </div>
 <div class="row mt-4 pb-3 text-center w-100">
+    @if( count($ilanlar) < 1 ) <div class="text-center">
+        <h1 class="text-danger mt-5" style="margin-bottom: 400px;">Hiç İlanınız Yok</h1>
+        <div>
+        </div>
+    @else
     @foreach ($ilanlar as $item)
     @php
         $first_img = $item->getMedia();
@@ -28,5 +33,6 @@
     </div>
 
     @endforeach
+    @endif
 </div>
 @endsection

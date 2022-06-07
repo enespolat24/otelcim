@@ -15,10 +15,7 @@ class Question extends Model
     * @var array<int, string>
     */
     protected $fillable = [
-        'from_user_id',
-        'to_user_id',
-        'message',
-        'answer'
+        'user_id', 'ilan_id', 'message', 'answer',
     ];
 
     public function ilan()
