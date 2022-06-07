@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -66,22 +67,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $isManager = false;
-
-        if($data['manager'] == 'on'){
+        if(Request()->manager){
             $isManager = true;
-            return User::create([
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => Hash::make($data['password']),
-                'is_hotel_manager' => $isManager,
-            ]);
-        }else{
-            return User::create([
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => Hash::make($data['password']),
-            ]);
         }
+        else{
+            $isManager = false;
+        }
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'is_hotel_manager' => $isManager,
+        ]);
     }
 }
