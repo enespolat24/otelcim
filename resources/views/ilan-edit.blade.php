@@ -46,6 +46,12 @@
                     {{$ilan->baslik}}</h1> --}}
                 <label for="baslik">İlan Başlığı</label>
                 <input type="text" class="form-control mb-5" id="baslik" name="baslik" value="{{$ilan->baslik}}">
+                <label for="baslik">Şehir</label>
+                <input type="text" class="form-control mb-5" id="sehir" name="sehir" value="{{$ilan->sehir}}">
+                <label for="baslik">İlçe</label>
+                <input type="text" class="form-control mb-5" id="ilce" name="ilce" value="{{$ilan->ilce}}">
+                <label for="baslik">Adres</label>
+                <input type="text" class="form-control mb-5" id="adres" name="adres" value="{{$ilan->adres}}">
                 <label for="baslik">İlan Açıklaması</label>
                 <textarea class="form-control" id="aciklama" rows="10" name="aciklama">{{$ilan->aciklama}}</textarea>
                 <button type="submit" class="btn btn-success mt-4">GÜNCELLE</button>
@@ -57,7 +63,7 @@
             <h1>{{$ilan->fiyat}} - Geceliği</h1>
             <form method="POST" action="/ilan-fiyat-guncelle/{{$ilan->id}}">
                 @csrf
-                <input type="text" name="fiyat" id="fiyat" placeholder="fiyatı giriniz">
+                <input type="text" name="fiyat" id="fiyat" value="{{$ilan->fiyat}}" placeholder="fiyatı giriniz">
 
                 <button type="submit" class="mt-2 btn btn-success">fiyat güncelle</button>
             </form>

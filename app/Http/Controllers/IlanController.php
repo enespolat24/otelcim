@@ -117,7 +117,7 @@ class IlanController extends Controller
         $ilan->adres = Auth::user()->id;
         $ilan->save();
 
-        return  "ilan başarıyla güncellendi";
+        return redirect()->back();
     }
 
     /**
@@ -157,6 +157,9 @@ class IlanController extends Controller
     public function ilanBaslikAciklama(Request $request, $id){
         $ilan = Ilan::find($id);
         $ilan->baslik = $request->baslik;
+        $ilan->sehir = $request->sehir;
+        $ilan->ilce = $request->ilce;
+        $ilan->adres = $request->adres;
         $ilan->aciklama = $request->aciklama;
         $ilan->save();
         return redirect()->back();
