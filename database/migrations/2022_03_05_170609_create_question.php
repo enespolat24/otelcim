@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->integer('user_id')->unsigned();
             $table->integer('ilan_id')->unsigned();
             $table->string('message');
+            $table->string('answer')->nullable();
             $table->timestamps();
         });
     }

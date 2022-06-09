@@ -22,7 +22,7 @@
                     <h3>{{ $item->baslik }}</h3>
                 </div>
                 <div class="card-block text-center">
-                    <p class="text-muted">{{$item->sehir . " / ". $item->ilce }}}</p>
+                    <p class="text-muted">{{$item->sehir . " / ". $item->ilce }}</p>
                     <h3 class="card-title">{{$item->fiyat}}</h3>
                     <p class="card-text">{{Str::limit($item->aciklama, 50)}}</p>
                     <a href="/detay/{{$item->id}}" class="btn btn-secondary mb-4"
