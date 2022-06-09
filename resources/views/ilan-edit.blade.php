@@ -61,8 +61,9 @@
     <div class="col-md-4">
         <div class="card mb-4 text-center p-2">
             <h1>{{$ilan->fiyat}} - Geceliği</h1>
-            <form method="POST" action="/ilan-fiyat-guncelle/{{$ilan->id}}">
+            <form method="POST" action="/ilan-fiyat-guncelle">
                 @csrf
+                <input type="hidden" name="id" value="{{$ilan->id}}">
                 <input type="text" name="fiyat" id="fiyat" value="{{$ilan->fiyat}}" placeholder="fiyatı giriniz">
 
                 <button type="submit" class="mt-2 btn btn-success">fiyat güncelle</button>

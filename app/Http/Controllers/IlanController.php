@@ -148,8 +148,8 @@ class IlanController extends Controller
         $thirdPhoto = $ilan->getMedia("default",["order" => 2])->first()->getUrl();
         return view('ilanliste.ilan-detay', compact('ilan', 'questions', 'yetkili', 'firstPhoto','secondPhoto','thirdPhoto'));
     }
-    public function fiyatGuncelle(Request $request,$id){
-        $ilan = Ilan::find($id);
+    public function fiyatGuncelle(Request $request){
+        $ilan = Ilan::find($request->id);
         $ilan->fiyat = $request->fiyat;
         $ilan->save();
         return redirect()->back();
@@ -159,6 +159,7 @@ class IlanController extends Controller
         $ilan->baslik = $request->baslik;
         $ilan->sehir = $request->sehir;
         $ilan->ilce = $request->ilce;
+        $ilan->fiyat = $request->fiyat;
         $ilan->adres = $request->adres;
         $ilan->aciklama = $request->aciklama;
         $ilan->save();
